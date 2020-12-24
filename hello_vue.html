@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Hello Vue</title>
 </head>
 <body>
-
+  <div id="app">
+    <h1> {{ message }} </h1>
+    <h1 v-text="message"></h1>
+    <h2> {{ value }} </h2>
+    <h2> {{ value * 5 }} </h2>
+    <img v-bind:src="imgSrc" alt="tuxedo cat with big cute eyes looking intrigued">
+    <br />
+    <a v-bind:href="link">Official Vue Website</a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="main.js"></script>
 </body>
 </html>
