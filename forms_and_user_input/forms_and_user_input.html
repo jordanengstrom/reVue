@@ -8,36 +8,33 @@
 </head>
 <body>
   <div id="app">
+    <p v-if="errors" class="mt-2" style="text-align: center">{{ errors }}</p>
     <div class="row justify-content-center mt-3">
-      <div class="col-5">
-        <p>Write a message!</p>
-        <textarea class="form-control"
-                  v-model="text"
-                  placeholder="write something"
-                  cols="60"
-                  rows="5">
-        </textarea>
+      <div class="col-10">
+        <form @submit.prevent="onSubmit">
+          <div class="form-group">
+            <label for="commentText">Publish a comment!</label>
+            <br>
+            <textarea name="form-control"
+                      v-model="comment"
+                      id="commentText"
+                      cols="80"
+                      rows="8"></textarea>
+          </div>
+          <button class="btn btn-sm btn-primary"
+                  type="submit">
+            Publish
+          </button>
+        </form>
       </div>
-      <div class="col-5">
-        <p>Message:</p>
-        <p>{{ text }}</p>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-10">
+        <div class="card mt-1" v-for="comment in comments">
+          <div class="card-body">{{ comment }}</div>
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center mt-3">
-      <input type="checkbox" id="checkbox" v-model="checked">
-      <label for="checkbox">&nbsp;&nbsp;Value: {{ checked }}</label>
-    </div>
-    <div class="row justify-content-center mt-3">
-      <select v-model="city">
-        <option>Rome</option>
-        <option>New York</option>
-        <option>Shenzen</option>
-        <option>London</option>
-        <option>Mumbai</option>
-      </select>
-      <span>&nbsp;&nbsp;Selected City: {{ city }}</span>
-    </div>
-
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
