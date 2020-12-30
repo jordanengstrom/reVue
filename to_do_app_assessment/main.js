@@ -18,7 +18,7 @@ const app = new Vue({
   data: {
     task: null,
     tasks: [],
-    error: null
+    error: "To add a new task, write something and press enter!"
   },
   methods: {
     submitTask(taskString) {
@@ -26,11 +26,16 @@ const app = new Vue({
         let newTask = this.task
         this.tasks.push(newTask);
         this.task = null;
-        if (this.errors) {
-          this.errors = null;
+        if (this.error) {
+          this.error = null;
         }
       } else {
-        this.errors = "You must add a task before submitting."
+        this.error = "You must add a task before submitting."
+      }
+    },
+    deleteTask(clickedTask) {
+      if (clickedTask) {
+
       }
     }
   },
