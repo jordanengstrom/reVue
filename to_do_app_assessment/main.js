@@ -16,30 +16,28 @@ Vue.component("task", {
 const app = new Vue({
   el: "#app",
   data: {
-    counter: 0,
     task: null,
-    tasks: []
+    tasks: [],
+    error: null
   },
   methods: {
     submitTask(taskString) {
-      `${this.tasks.push(taskString)}`;
-      `${this.incrementCounter()}`;
-    },
-    deleteTask(task) {
-      // figure out how to delete that specific task
-      `${this.decrementCounter()}`;
+      if (this.task) {
+        let newTask = this.task
+        this.tasks.push(newTask);
+        this.task = null;
+        if (this.errors) {
+          this.errors = null;
+        }
+      } else {
+        this.errors = "You must add a task before submitting."
+      }
     }
   },
   computed: {
-    incrementCounter() {
-      return `${this.counter}++`;
-    },
-    decrementCounter() {
-      return `${this.counter}--`;
+    getTaskCount() {
+      return this.tasks.length;
     }
-  },
-  props: {
-
   }
 
 });
