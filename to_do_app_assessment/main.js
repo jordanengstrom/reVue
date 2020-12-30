@@ -35,7 +35,10 @@ const app = new Vue({
     },
     deleteTask(clickedTask) {
       if (clickedTask) {
-
+        let taskIndex = this.tasks.indexOf(clickedTask);
+        if (taskIndex > -1) {
+          this.tasks.splice(taskIndex, 1);
+        }
       }
     }
   },
