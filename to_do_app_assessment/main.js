@@ -70,5 +70,4 @@ const app = new Vue({
     task: singleTask,
     taskList: taskList
   }
-
 });
