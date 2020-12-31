@@ -5,13 +5,6 @@ const taskList = Vue.component("task-list", {
       required: true
     }
   },
-
-  // data: function () {
-  //   return {
-  //     newTask: null,
-  //     error: null
-  //   }
-  // },
   template: `
   <div>
     <single-task v-for="(task, index) in tasks" :task="task" :key="index"></single-task>
@@ -27,20 +20,19 @@ const singleTask = Vue.component("single-task", {
     }
   },
   methods: {
-    deleteTask(clickedTask) {
-      if (clickedTask) {
-        let taskIndex = this.tasks.indexOf(clickedTask);
-        if (taskIndex > -1) {
-          this.tasks.splice(taskIndex, 1);
-        }
+    deleteTask(task) {
+      let taskIndex = app.tasks.indexOf(task);
+      if (taskIndex > -1) {
+        app.tasks.splice(taskIndex, 1);
       }
     }
+
   },
   template: `
     <div>
       <div class="alert alert-success alert-dismissible fade show mb-2" role="alert">
         {{ task }}
-        <button type="button" @click="deleteTask" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" @click="deleteTask(task)" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
